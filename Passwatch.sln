@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34902.65
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Passwatch", "src\Passwatch\Passwatch.csproj", "{7D421E3F-6693-49D5-970D-AC8CAC54A529}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{4284C66C-E624-4B88-8D0D-AFE6C7FB9BDA}"
+	ProjectSection(SolutionItems) = preProject
+		data\bluzgi.csv = data\bluzgi.csv
+		data\brawlstars.csv = data\brawlstars.csv
+		data\common.csv = data\common.csv
+		data\games.csv = data\games.csv
+		data\names.csv = data\names.csv
+		data\nick.csv = data\nick.csv
+		data\numbers.csv = data\numbers.csv
+		data\petts.csv = data\petts.csv
+		data\pokemon.csv = data\pokemon.csv
+		data\reply-bluzgi.csv = data\reply-bluzgi.csv
+		data\reply-brawlstars.csv = data\reply-brawlstars.csv
+		data\reply-common.csv = data\reply-common.csv
+		data\reply-games.csv = data\reply-games.csv
+		data\reply-medium.csv = data\reply-medium.csv
+		data\reply-names.csv = data\reply-names.csv
+		data\reply-nick.csv = data\reply-nick.csv
+		data\reply-numbers.csv = data\reply-numbers.csv
+		data\reply-petts.csv = data\reply-petts.csv
+		data\reply-pokemon.csv = data\reply-pokemon.csv
+		data\reply-weak.csv = data\reply-weak.csv
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{68C8EE37-EA7F-4B2A-8006-1DB00A6D05BE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Easy-Password-Validator", "..\Easy-Password-Validator\Easy-Password-Validator\Easy-Password-Validator.csproj", "{29418509-2178-471D-851E-3934C9A12C17}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7D421E3F-6693-49D5-970D-AC8CAC54A529}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D421E3F-6693-49D5-970D-AC8CAC54A529}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D421E3F-6693-49D5-970D-AC8CAC54A529}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D421E3F-6693-49D5-970D-AC8CAC54A529}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29418509-2178-471D-851E-3934C9A12C17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29418509-2178-471D-851E-3934C9A12C17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29418509-2178-471D-851E-3934C9A12C17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29418509-2178-471D-851E-3934C9A12C17}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4D450F18-1F07-4CBA-9E71-B64976B3F4F0}
+	EndGlobalSection
+EndGlobal
