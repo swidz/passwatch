@@ -44,10 +44,6 @@ public class TestFunny : IPasswordTest
         FailureMessage = null;
         ScoreModifier = 0;
 
-        // Check for inactive
-        if (Settings.UseBadList == false)
-            return true;
-
         // Check for match
         var match = _words.Any(x => CheckContains(password, x));
 
@@ -70,9 +66,8 @@ public class TestFunny : IPasswordTest
 
     private bool CheckContains(string password, string word)
     {
-        if(password.Contains(word, StringComparison.OrdinalIgnoreCase))
+        if(password.Contains(word, StringComparison.OrdinalIgnoreCase) || password.Equals(word, StringComparison.OrdinalIgnoreCase))
         {
-            Console.WriteLine($"Password {password} contains {word}");
             return true;
         }
         return false;
