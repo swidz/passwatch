@@ -1,17 +1,30 @@
 ﻿
-using Easy_Password_Validator.Models;
 using Easy_Password_Validator;
-using System.Security;
+using Easy_Password_Validator.Models;
 using Passwatch.Tests;
 
 while (true)
 {
-    var password = GetPasswordAsString("Podaj hasło:");
+    var password1 = GetPasswordAsString("Podaj hasło:");
+    Console.WriteLine();
+    var password2 = GetPasswordAsString("Powtórz hasło:");
     Console.WriteLine();
 
-    var result = CheckPassword(password);
+    if (!password1.Equals(password2))
+    {
+        Console.WriteLine("Hasła nie są takie same. Spróbuj jeszcze raz...");
+        Console.WriteLine();
+        Console.ReadKey();
+        Console.Clear();
 
-    PrintPasswordFeatures(password);
+        continue;
+    }
+
+    Console.WriteLine();
+
+    var result = CheckPassword(password1);
+
+    PrintPasswordFeatures(password1);
 
     Console.WriteLine("Naciśnij dowolny klawisz i spróbuj ponownie lub Ctrl-C aby zakończyć...");
 
@@ -36,8 +49,8 @@ static bool CheckPassword(string password)
         UseUnique = true,
         MinUniqueCharacters = 6,
         UseRepeat = true,
-        MaxRepeatSameCharacter = 3, 
-        MaxNeighboringCharacter = 3,
+        MaxRepeatSameCharacter = 2, 
+        MaxNeighboringCharacter = 2,
         RequireLowercase = true,
         RequireUppercase = true,
         RequirePunctuation = true,
@@ -63,47 +76,17 @@ static bool CheckPassword(string password)
     var pass = passwordValidator.TestAndScore(password, languageCode: "pl");
 
 
-    if (pass)
-        Console.WriteLine($"Gratulacje! Silne hasło z wynikiem: {passwordValidator.Score}");
+    if (passwordValidator.Score < 100)
+        Console.WriteLine($"Uważaj! Słabe hasło! Twój wynik to: {passwordValidator.Score}");
     else
-        Console.WriteLine($"Uważaj! Słabe hasło z wynikiem: {passwordValidator.Score}");
-
+        Console.WriteLine($"Twój wynik to: {passwordValidator.Score}");
+   
 
     if (pass == false)
     {
         foreach (var message in passwordValidator.FailureMessages)
             Console.WriteLine(message);
     }
-    return pass;
-}
-
-static SecureString GetPasswordAsSecureString(String displayMessage)
-{
-    SecureString pass = new SecureString();
-    Console.Write(displayMessage);
-    ConsoleKeyInfo key;
-
-    do
-    {
-        key = Console.ReadKey(true);
-
-        // Backspace Should Not Work
-        if (!char.IsControl(key.KeyChar))
-        {
-            pass.AppendChar(key.KeyChar);
-            Console.Write("*");
-        }
-        else
-        {
-            if (key.Key == ConsoleKey.Backspace && pass.Length > 0)
-            {
-                pass.RemoveAt(pass.Length - 1);
-                Console.Write("\b \b");
-            }
-        }
-    }
-    // Stops Receving Keys Once Enter is Pressed
-    while (key.Key != ConsoleKey.Enter);
     return pass;
 }
 
@@ -133,13 +116,12 @@ static string GetPasswordAsString(String displayMessage)
         }
     }
     // Stops Receving Keys Once Enter is Pressed
-    while (key.Key != ConsoleKey.Enter);
+    while (key.Key != ConsoleKey.Enter || pass.Length == 0);
     return pass;
 }
 
 static void PrintPasswordFeatures(string password)
 {
-
     Console.WriteLine();
     Console.WriteLine("===================================");
     Console.WriteLine($"Długość hasła: {password.Length}");
@@ -151,5 +133,5 @@ static void PrintPasswordFeatures(string password)
     Console.WriteLine($"Ilość słów: {password.Split(" \t", StringSplitOptions.RemoveEmptyEntries).Length}");
     Console.WriteLine("===================================");
 
-
+    Console.WriteLine();
 }
