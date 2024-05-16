@@ -9,6 +9,9 @@ while (true)
     var password = GetPasswordAsString("Podaj hasło:");
 
     var result = CheckPassword(password);
+
+    PrintPasswordFeatures(password);
+
     Console.ReadKey();
     Console.Clear();
 }
@@ -31,7 +34,7 @@ static bool CheckPassword(string password)
         MinUniqueCharacters = 6,
         UseRepeat = true,
         MaxRepeatSameCharacter = 3, 
-        MaxNeighboringCharacter = 2,
+        MaxNeighboringCharacter = 3,
         RequireLowercase = true,
         RequireUppercase = true,
         RequirePunctuation = true,
@@ -58,9 +61,9 @@ static bool CheckPassword(string password)
 
 
     if (pass)
-        Console.WriteLine($"Silne hasło z wynikiem: {passwordValidator.Score}");
+        Console.WriteLine($"Gratulacje! Silne hasło z wynikiem: {passwordValidator.Score}");
     else
-        Console.WriteLine($"Słabe hasło z wynikiem: {passwordValidator.Score}");
+        Console.WriteLine($"Uważaj! Słabe hasło z wynikiem: {passwordValidator.Score}");
 
 
     if (pass == false)
@@ -129,4 +132,20 @@ static string GetPasswordAsString(String displayMessage)
     // Stops Receving Keys Once Enter is Pressed
     while (key.Key != ConsoleKey.Enter);
     return pass;
+}
+
+static void PrintPasswordFeatures(string password)
+{
+
+    Console.WriteLine();
+    Console.WriteLine("===================================");
+    Console.WriteLine($"Długość hasła: {password.Length}");
+    Console.WriteLine($"Ilość małych liter: {password.ToCharArray().Where(c => Char.IsLetter(c) && Char.IsLower(c)).Count()}");
+    Console.WriteLine($"Ilość dużych liter: {password.ToCharArray().Where(c => Char.IsLetter(c) && Char.IsUpper(c)).Count()}");
+    Console.WriteLine($"Ilość cyfr: {password.ToCharArray().Where(c => Char.IsDigit(c)).Count()}");
+    Console.WriteLine($"Ilość znaków specjalnych: {password.ToCharArray().Where(c => Char.IsPunctuation(c)).Count()}");
+    Console.WriteLine($"Ilość białych znaków: {password.ToCharArray().Where(c => Char.IsWhiteSpace(c)).Count()}");
+    Console.WriteLine($"Ilość słów: {password.Split(" \t", StringSplitOptions.RemoveEmptyEntries).Length}");
+    Console.WriteLine("===================================");
+
 }

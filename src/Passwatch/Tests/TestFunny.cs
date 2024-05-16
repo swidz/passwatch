@@ -66,10 +66,11 @@ public class TestFunny : IPasswordTest
 
     private bool CheckContains(string password, string word)
     {
-        if(password.Contains(word, StringComparison.OrdinalIgnoreCase) || password.Equals(word, StringComparison.OrdinalIgnoreCase))
+        if(password.StartsWith(word, StringComparison.OrdinalIgnoreCase))
         {
             return true;
         }
+
         return false;
     }
 

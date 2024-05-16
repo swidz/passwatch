@@ -27,6 +27,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{4284C66C-E
 		data\reply-petts.csv = data\reply-petts.csv
 		data\reply-pokemon.csv = data\reply-pokemon.csv
 		data\reply-weak.csv = data\reply-weak.csv
+		data\top-100k-passwords.txt = data\top-100k-passwords.txt
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{68C8EE37-EA7F-4B2A-8006-1DB00A6D05BE}"
