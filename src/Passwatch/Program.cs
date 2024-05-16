@@ -7,6 +7,7 @@ using Passwatch.Tests;
 while (true)
 {
     var password = GetPasswordAsString("Podaj hasło:");
+    Console.WriteLine();
 
     var result = CheckPassword(password);
 
