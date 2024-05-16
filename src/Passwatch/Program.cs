@@ -13,6 +13,8 @@ while (true)
 
     PrintPasswordFeatures(password);
 
+    Console.WriteLine("Naciśnij dowolny klawisz i spróbuj ponownie lub Ctrl-C aby zakończyć...");
+
     Console.ReadKey();
     Console.Clear();
 }
@@ -148,5 +150,6 @@ static void PrintPasswordFeatures(string password)
     Console.WriteLine($"Ilość białych znaków: {password.ToCharArray().Where(c => Char.IsWhiteSpace(c)).Count()}");
     Console.WriteLine($"Ilość słów: {password.Split(" \t", StringSplitOptions.RemoveEmptyEntries).Length}");
     Console.WriteLine("===================================");
+
 
 }
