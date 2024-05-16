@@ -52,7 +52,7 @@ static bool CheckPassword(string password)
 
     passwordValidator.PrependTest(new TestFunny(requirements, "data\\bluzgi.csv", "data\\reply-bluzgi.csv"));
     passwordValidator.PrependTest(new TestFunny(requirements, "data\\brawlstars.csv", "data\\reply-brawlstars.csv"));
-    passwordValidator.PrependTest(new TestFunny(requirements, "data\\common.csv", "data\\reply-common.csv"));
+    passwordValidator.PrependTest(new TestFunny(requirements, "data\\common.csv", "data\\reply-common.csv", Passwatch.Enums.BadWordsCheckType.Equals));
     passwordValidator.PrependTest(new TestFunny(requirements, "data\\games.csv", "data\\reply-games.csv"));
     passwordValidator.PrependTest(new TestFunny(requirements, "data\\names.csv", "data\\reply-names.csv"));
     passwordValidator.PrependTest(new TestFunny(requirements, "data\\nick.csv", "data\\reply-nick.csv"));

@@ -1,10 +1,13 @@
 ﻿using Easy_Password_Validator.Interfaces;
+using Passwatch.Enums;
+using System.Runtime.CompilerServices;
 
 namespace Passwatch.Tests;
 public class TestFunny : IPasswordTest
 {
     private readonly IEnumerable<string> _words;
     private readonly IEnumerable<string> _replies;
+    private readonly BadWordsCheckType _checkType;
 
     /// <summary>
     /// Reads a file containing bad passwords and loads them into the badlist
@@ -12,7 +15,7 @@ public class TestFunny : IPasswordTest
     /// <param name="passwordRequirements">Object containing current settings</param>
     /// <param name="fileName">The full filename containing the bad password list to use</param>
     /// <exception cref="ArgumentException"></exception>
-    public TestFunny(IPasswordRequirements passwordRequirements, string fileName, string fileNameReply)
+    public TestFunny(IPasswordRequirements passwordRequirements, string fileName, string fileNameReply, BadWordsCheckType checkType = BadWordsCheckType.StartsWith)
     {
         Settings = passwordRequirements;
 
@@ -25,6 +28,7 @@ public class TestFunny : IPasswordTest
         //TODO Read as CSVs and parse
         _words = File.ReadAllLines(fileName, System.Text.Encoding.UTF8);
         _replies = File.ReadAllLines(fileNameReply, System.Text.Encoding.UTF8);
+        _checkType = checkType;
     }
 
 
@@ -66,12 +70,13 @@ public class TestFunny : IPasswordTest
 
     private bool CheckContains(string password, string word)
     {
-        if(password.StartsWith(word, StringComparison.OrdinalIgnoreCase))
+        return _checkType switch
         {
-            return true;
-        }
-
-        return false;
+            BadWordsCheckType.StartsWith => password.StartsWith(word, StringComparison.OrdinalIgnoreCase),
+            BadWordsCheckType.Contains => password.Contains(word, StringComparison.OrdinalIgnoreCase),
+            BadWordsCheckType.Equals => password.Equals(word, StringComparison.OrdinalIgnoreCase),
+            _ => false,
+        };
     }
 
 }
