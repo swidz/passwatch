@@ -50,13 +50,13 @@ static bool CheckPassword(string password)
     var passwordValidator = new PasswordValidatorService(requirements);
 
 
-    passwordValidator.PrependTest(new TestFunny(requirements, "data\\bluzgi.csv", "data\\reply-bluzgi.csv"));
+    passwordValidator.PrependTest(new TestFunny(requirements, "data\\bluzgi.csv", "data\\reply-bluzgi.csv", Passwatch.Enums.BadWordsCheckType.Contains));
     passwordValidator.PrependTest(new TestFunny(requirements, "data\\brawlstars.csv", "data\\reply-brawlstars.csv"));
     passwordValidator.PrependTest(new TestFunny(requirements, "data\\common.csv", "data\\reply-common.csv", Passwatch.Enums.BadWordsCheckType.Equals));
     passwordValidator.PrependTest(new TestFunny(requirements, "data\\games.csv", "data\\reply-games.csv"));
     passwordValidator.PrependTest(new TestFunny(requirements, "data\\names.csv", "data\\reply-names.csv"));
     passwordValidator.PrependTest(new TestFunny(requirements, "data\\nick.csv", "data\\reply-nick.csv"));
-    passwordValidator.PrependTest(new TestFunny(requirements, "data\\numbers.csv", "data\\reply-numbers.csv"));
+    passwordValidator.PrependTest(new TestFunny(requirements, "data\\numbers.csv", "data\\reply-numbers.csv", Passwatch.Enums.BadWordsCheckType.Contains));
     passwordValidator.PrependTest(new TestFunny(requirements, "data\\petts.csv", "data\\reply-petts.csv"));
     passwordValidator.PrependTest(new TestFunny(requirements, "data\\pokemon.csv", "data\\reply-pokemon.csv"));
 
